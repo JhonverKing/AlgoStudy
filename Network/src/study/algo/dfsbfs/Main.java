@@ -40,9 +40,6 @@ public class Main {
             if(isLinked(computers, i, visitedArray)) answer ++;
         }
 
-        for(int i=0; i< computers.length; i++){
-            System.out.println("array : " + computers[i][i]);
-        }
         System.out.println("answer : " + answer);
     }
 
