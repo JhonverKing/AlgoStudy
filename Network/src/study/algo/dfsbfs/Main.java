@@ -44,7 +44,7 @@ public class Main {
     }
 
     public static boolean isLinked(int[][] coms, int depth, int[] visited) {
-
+        
         if (visited[depth] == 1)
             return false;
 
