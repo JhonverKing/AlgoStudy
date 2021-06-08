@@ -80,5 +80,32 @@ public class Main {
     }
 
 
+    //[[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+    //[[1, 1, 0, 0], [1, 1, 0, 1], [0, 0, 1, 0], [0, 1, 0, 1]]
+    public static boolean BFS(int[][] coms, int depth){
+        int[] visited = new int[coms.length];
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+
+
+//        while(queue.size() != 0){
+//
+//            for()
+//
+//        }
+
+
+        for(int i=0; i<coms.length; i++){
+            if(visited[i] == 0)
+            {
+                visited = new int[coms.length];
+            }
+            for(int j=0; j<coms[i].length; j++){
+                if(coms[i][j] == 1){
+                    visited[j] = 1;
+                }
+            }
+        }
+        return false;
+    }
 
 }
