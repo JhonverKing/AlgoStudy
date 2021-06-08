@@ -1,3 +1,4 @@
+package study.algo.dfsbfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -24,7 +25,8 @@ public class Main {
 
     public static void main(String[] args) {
 //        int[][] computers = {{1, 0, 1, 1, 0, 0}, {0, 1, 0, 0, 1, 1}, {1, 0, 1, 1, 1, 1}, {1, 0, 1, 1, 1, 1}, {0, 1, 1, 1, 1, 1}, {0, 1, 1, 1, 1, 1}};
-        int[][] computers = {{1, 0, 0, 1}, {0, 1, 1, 1}, {0, 1, 1, 0}, {1, 1, 0, 1}};
+        int[][] computers = {{1, 1, 0, 0, 0, 0}, {1, 1, 0, 1, 0, 0}, {0, 0, 1, 0, 0, 1}, {0, 1, 0, 1, 0, 0}, {0, 0, 0, 0, 1, 0}, {0, 0, 1, 0, 0, 1}};
+//        int[][] computers = {{1, 0, 0, 1}, {0, 1, 1, 1}, {0, 1, 1, 0}, {1, 1, 0, 1}};
         int answer = 0;
         int[] visitedArray = new int[computers.length];
 
