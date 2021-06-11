@@ -25,17 +25,18 @@ public class Main {
 
     public static void main(String[] args) {
 //        int[][] computers = {{1, 0, 1, 1, 0, 0}, {0, 1, 0, 0, 1, 1}, {1, 0, 1, 1, 1, 1}, {1, 0, 1, 1, 1, 1}, {0, 1, 1, 1, 1, 1}, {0, 1, 1, 1, 1, 1}};
-        int[][] computers = {{1, 1, 0, 0, 0, 0}, {1, 1, 0, 1, 0, 0}, {0, 0, 1, 0, 0, 1}, {0, 1, 0, 1, 0, 0}, {0, 0, 0, 0, 1, 0}, {0, 0, 1, 0, 0, 1}};
 //        int[][] computers = {{1, 0, 0, 1}, {0, 1, 1, 1}, {0, 1, 1, 0}, {1, 1, 0, 1}};
+        int[][] computers = {{1, 1, 0, 0, 0, 0}, {1, 1, 0, 1, 0, 0}, {0, 0, 1, 0, 0, 1}, {0, 1, 0, 1, 0, 0}, {0, 0, 0, 0, 1, 0}, {0, 0, 1, 0, 0, 1}};
+        int n = computers.length;
         int answer = 0;
-        int[] visitedArray = new int[computers.length];
+        int[] visitedArray = new int[n];
 
-        int[][] comsClone = new int[computers.length][computers.length];
-        for(int i=0; i<computers.length; i++)
-            comsClone[i] = computers[i].clone();
+//        int[][] comsClone = new int[computers.length][computers.length];
+//        for(int i=0; i<computers.length; i++)
+//            comsClone[i] = computers[i].clone();
 
 
-        for (int i = 0; i < comsClone.length; i++) {
+        for (int i = 0; i < n; i++) {
 //            if(isLinked(comsClone, i)) answer++;
             if(isLinked(computers, i, visitedArray)) answer ++;
         }
@@ -44,14 +45,10 @@ public class Main {
     }
 
     public static boolean isLinked(int[][] coms, int depth, int[] visited) {
-        
-        if (visited[depth] == 1)
-            return false;
+        if (visited[depth] == 1) return false;
 
         visited[depth] = 1;
         for (int i = 0; i < coms[depth].length; i++) {
-            if (depth == i) continue;
-
             if (coms[depth][i] == 1)
                 isLinked(coms, i, visited);
         }
@@ -63,48 +60,15 @@ public class Main {
     // computers의 값을 변경했기 때문에 다시 활용할수 없음,
     // computers를 원본으로 유지하려면 결국 2차원 배열에 대한 Deep Copy를 해야함
     public static boolean isLinked(int[][] coms, int depth) {
-
-        if (coms[depth][depth] == 2)
-            return false;
+        if (coms[depth][depth] == 2) return false;
 
         coms[depth][depth] = 2;
         for (int i = 0; i < coms[depth].length; i++) {
-            if (depth == i) continue;
-
             if (coms[depth][i] == 1)
                 isLinked(coms, i);
         }
 
         return true;
-    }
-
-
-    //[[1, 1, 0], [1, 1, 0], [0, 0, 1]]
-    //[[1, 1, 0, 0], [1, 1, 0, 1], [0, 0, 1, 0], [0, 1, 0, 1]]
-    public static boolean BFS(int[][] coms, int depth){
-        int[] visited = new int[coms.length];
-        LinkedList<Integer> queue = new LinkedList<Integer>();
-
-
-//        while(queue.size() != 0){
-//
-//            for()
-//
-//        }
-
-
-        for(int i=0; i<coms.length; i++){
-            if(visited[i] == 0)
-            {
-                visited = new int[coms.length];
-            }
-            for(int j=0; j<coms[i].length; j++){
-                if(coms[i][j] == 1){
-                    visited[j] = 1;
-                }
-            }
-        }
-        return false;
     }
 
 }
