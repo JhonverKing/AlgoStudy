@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce5eb174-e94f-4939-b6b8-afbe9e0842dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/study/algo/dfsbfs/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/study/algo/dfsbfs/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="ce5eb174-e94f-4939-b6b8-afbe9e0842dd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +103,7 @@
       <updated>1623137192461</updated>
       <workItem from="1623137196130" duration="299000" />
       <workItem from="1623140591796" duration="604000" />
-      <workItem from="1623375625192" duration="485000" />
+      <workItem from="1623375625192" duration="1227000" />
     </task>
     <servers />
   </component>
