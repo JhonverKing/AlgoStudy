@@ -1,4 +1,4 @@
-package study.algo.dfsbfs;
+package com.company;
 
 public class Main {
 
@@ -12,7 +12,7 @@ public class Main {
         - 타겟 넘버는 1 이상 1000 이하인 자연수입니다.
      */
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
         int[] numbers = {1,1,1,1,1};
         int target = 3;
         int answer = 0;
