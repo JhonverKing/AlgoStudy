@@ -1,0 +1,1 @@
+burger.letters.com - - [01 / Jul / 1955 : 00 : 00 : 06 -0400] "GET / shuttle / countdown / asd.gif HTTP / 1.0" 200 3985
