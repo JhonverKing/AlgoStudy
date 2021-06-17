@@ -21,7 +21,6 @@ public class Main {
          - begin과 target은 같지 않습니다.
          - 변환할 수 없는 경우에는 0를 return 합니다.
      */
-    static int result = 0;
 
     public static void main(String[] args) {
 
@@ -29,70 +28,45 @@ public class Main {
         String begin = "hit";
         String target = "cog";
         String[] words = {"hot", "dot", "dog", "lot", "log", "cog"};
-//        String[] words = {"hhh","hht"};
-        List resultList = new ArrayList();
 
         int[] visited = new int[words.length];
-        dfs(begin, target, words,0, visited, -1, result);
-
-        if(resultList.size() != 0) answer = (int)resultList.get(0);
-        for(Object i : resultList){
-            if(answer > (int)i) answer = (int)i;
-        }
-
+        answer = dfs(begin, target, words,0, visited);
         System.out.println("answer : " + answer);
-
-	// write your code here
     }
-    public static void dfs(String begin, String target, String[] words, int sum, int[] visited, int depth, List resultList) {
-        int[] visited2 = visited.clone();
+    //
+    public static int dfs(String begin, String target, String[] words, int depth, int[] visited) {
+        int result = 0;
+        // 방문배열을 노드별로 관리하기 위해 새로운 배열을 생성하여 초기값을 클론으로 할당
+        int[] visitedClone = visited.clone();
 
-        if(depth >= 0){
-            if(visited2[depth] == 1) return;
-            visited2[depth] = 1;
-        }
+        // 목표 단어와 일치할 경우 노드의 깊이를 반환한다.
+        if(begin.equals(target))
+            return depth;
 
-        if(begin.equals(target)) {
-            resultList.add(sum);
-            return;
-        }
+        for(int i=0; i<words.length; i++){
+            // words[i]가 이미 방문한 노드면 컨티뉴
+            if(visitedClone[i] == 1) continue;
 
-        for(int j=0; j<words.length; j++){
+            // 변경 가능한 단어가 있는지 찾는다.
             int cnt = 0;
-            for(int i=0; i<begin.length(); i++){
-                if(begin.substring(i, i+1).equals(words[j].substring(i, i+1))) cnt++;
+            for(int j=0; j<begin.length(); j++){
+                if(begin.substring(j, j+1).equals(words[i].substring(j, j+1))) cnt++;
             }
-            if(cnt == 2) {
-                dfs(words[j], target, words, sum + 1, visited2, j, resultList);
-            }
-        }
-        return;
-    }
 
-    public static void dfs(String begin, String target, String[] words, int sum, int[] visited, int depth, int result) {
-        int[] visited2 = visited.clone();
+            // 변경 가능한 단어는 방문표시 하고 방문
+            if(cnt == begin.length()-1) {
+                visitedClone[i] = 1;
+                int temp = dfs(words[i], target, words, depth+1, visitedClone);
 
-        if(depth >= 0){
-            if(visited2[depth] == 1) return;
-            visited2[depth] = 1;
-        }
-
-        if(begin.equals(target)) {
-            if(sum != 0 && result < sum)
-                sum = result;
-            return;
-        }
-
-        for(int j=0; j<words.length; j++){
-            int cnt = 0;
-            for(int i=0; i<begin.length(); i++){
-                if(begin.substring(i, i+1).equals(words[j].substring(i, i+1))) cnt++;
-            }
-            if(cnt == 2) {
-                dfs(words[j], target, words, sum + 1, visited2, j, result);
+                // 방문한 노드에서 목표단어 까지의 depth를 리턴받아서 가장 작은 값을 result에 담는다
+                if(temp != 0){
+                    if(result == 0) result = temp;
+                    else if(result > temp) result = temp;
+                }
             }
         }
-        return;
+
+        return result;
     }
 
 }
