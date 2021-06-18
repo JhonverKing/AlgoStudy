@@ -33,6 +33,17 @@ public class Main {
         System.out.println("bfs : " + bfs(begin, target, words));
     }
 
+    // 변경 가능한지 체크
+    public static boolean canChange(String begin, String word){
+        int cnt = 0;
+        for(int j=0; j<begin.length(); j++){
+            if(begin.substring(j, j+1).equals(word.substring(j, j+1))) cnt++;
+        }
+        if(cnt == begin.length()-1)
+            return true;
+        return false;
+    }
+
     public static int dfs(String begin, String target, String[] words, int depth, int[] visited) {
         int result = 0;
         // 방문배열을 노드별로 관리하기 위해 새로운 배열을 생성하여 초기값을 클론으로 할당
@@ -46,14 +57,8 @@ public class Main {
             // words[i]가 이미 방문한 노드면 컨티뉴
             if(visitedClone[i] == 1) continue;
 
-            // 변경 가능한 단어가 있는지 찾는다.
-            int cnt = 0;
-            for(int j=0; j<begin.length(); j++){
-                if(begin.substring(j, j+1).equals(words[i].substring(j, j+1))) cnt++;
-            }
-
             // 변경 가능한 단어는 방문표시 하고 방문
-            if(cnt == begin.length()-1) {
+            if(canChange(begin, words[i])) {
                 visitedClone[i] = 1;
                 int temp = dfs(words[i], target, words, depth+1, visitedClone);
 
@@ -81,14 +86,8 @@ public class Main {
                 // words[i]가 이미 방문한 노드면 컨티뉴
                 if(visited[i] == 1) continue;
 
-                // 변경 가능한 단어가 있는지 찾는다.
-                int cnt = 0;
-                for (int j = 0; j < current.length(); j++) {
-                    if (current.substring(j, j + 1).equals(words[i].substring(j, j + 1))) cnt++;
-                }
-
                 // 변경 가능한 단어는 방문표시 하고 다음 방문할 큐에 추가
-                if(cnt == current.length()-1) {
+                if(canChange(current, words[i])) {
                     // 변경 가능한 단어중 target이 있다면 depth+1을 결과로 리턴
                     if(target.equals(words[i])) return depth+1;
                     visited[i] = 1;
