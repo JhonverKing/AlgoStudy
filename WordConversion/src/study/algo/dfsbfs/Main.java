@@ -1,7 +1,6 @@
 package study.algo.dfsbfs;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -23,7 +22,6 @@ public class Main {
      */
 
     public static void main(String[] args) {
-
         int answer = 0;
         String begin = "hit";
         String target = "cog";
@@ -31,9 +29,10 @@ public class Main {
 
         int[] visited = new int[words.length];
         answer = dfs(begin, target, words,0, visited);
-        System.out.println("answer : " + answer);
+        System.out.println("dfs : " + answer);
+        System.out.println("bfs : " + bfs(begin, target, words));
     }
-    //
+
     public static int dfs(String begin, String target, String[] words, int depth, int[] visited) {
         int result = 0;
         // 방문배열을 노드별로 관리하기 위해 새로운 배열을 생성하여 초기값을 클론으로 할당
@@ -69,4 +68,45 @@ public class Main {
         return result;
     }
 
+    public static int bfs(String begin, String target, String[] words) {
+        int depth = 0;
+        Queue<String> que = new LinkedList<>();
+        Queue<String> nextQueue = new LinkedList<>();
+        int[] visited = new int[words.length];
+        que.add(begin);
+
+        while(que.size()!=0){
+            String current = que.poll();
+            for(int i=0; i<words.length; i++) {
+                // words[i]가 이미 방문한 노드면 컨티뉴
+                if(visited[i] == 1) continue;
+
+                // 변경 가능한 단어가 있는지 찾는다.
+                int cnt = 0;
+                for (int j = 0; j < current.length(); j++) {
+                    if (current.substring(j, j + 1).equals(words[i].substring(j, j + 1))) cnt++;
+                }
+
+                // 변경 가능한 단어는 방문표시 하고 다음 방문할 큐에 추가
+                if(cnt == current.length()-1) {
+                    // 변경 가능한 단어중 target이 있다면 depth+1을 결과로 리턴
+                    if(target.equals(words[i])) return depth+1;
+                    visited[i] = 1;
+                    nextQueue.add(words[i]);
+                }
+            }
+
+            // 검사할 큐가 비어있을때 다음 방문할 큐가 있다면 방문할 큐를 검사할 큐에 넣고 depth를 1 증가한다.
+            // 다음 방문할 큐는 다시 초기화 해준다.
+            if(que.size() == 0) {
+                if(nextQueue.size() > 0){
+                    que = nextQueue;
+                    nextQueue = new LinkedList<>();
+                    depth++;
+                }
+            }
+        }
+
+        return 0;
+    }
 }
