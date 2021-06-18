@@ -99,6 +99,7 @@ public class Main {
             // 다음 방문할 큐는 다시 초기화 해준다.
             if(que.size() == 0) {
                 if(nextQueue.size() > 0){
+                    System.out.println("que : " + nextQueue);
                     que = nextQueue;
                     nextQueue = new LinkedList<>();
                     depth++;
