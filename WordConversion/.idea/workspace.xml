@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2c4606d-5652-4fac-bcb5-5fe4d6082576" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../WordConversion/src/com/company/JabbooTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordConversion/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordConversion/WordConversion_DFS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordConversion/src/study/algo/dfsbfs/Main.java" beforeDir="false" />
+    <list default="true" id="4cd7dc07-4936-4780-92c5-8c22aad76963" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/company/JabbooTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Network/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Network/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WordConversion_DFS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/study/algo/dfsbfs/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1ttd4TAFzXTDu1akXVNgplYHcT3" />
+  <component name="ProjectId" id="1uCSeFY7UhfbLPiZfGcWjTvK5J0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -80,18 +87,25 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
-      <module name="Network" />
+      <module name="WordConversion" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,15 +119,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d2c4606d-5652-4fac-bcb5-5fe4d6082576" name="Default Changelist" comment="" />
-      <created>1623592129020</created>
+      <changelist id="4cd7dc07-4936-4780-92c5-8c22aad76963" name="Default Changelist" comment="" />
+      <created>1624168171956</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1623592129020</updated>
-      <workItem from="1623592130660" duration="194000" />
-      <workItem from="1623592610880" duration="22000" />
-      <workItem from="1623668351869" duration="2404000" />
-      <workItem from="1624168086899" duration="601000" />
+      <updated>1624168171956</updated>
+      <workItem from="1624168174695" duration="1903000" />
     </task>
     <servers />
   </component>
@@ -130,6 +141,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
