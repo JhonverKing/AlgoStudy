@@ -1,5 +1,3 @@
-package dfsbfs;
-
 import java.util.*;
 
 public class Main {
@@ -36,8 +34,9 @@ public class Main {
     // 변경 가능한지 체크
     public static boolean canChange(String begin, String word){
         int cnt = 0;
+
         for(int j=0; j<begin.length(); j++){
-            if(begin.substring(j, j+1).equals(word.substring(j, j+1))) cnt++;
+            if(begin.charAt(j) == word.charAt(j)) cnt++;
         }
         if(cnt == begin.length()-1)
             return true;
@@ -48,6 +47,7 @@ public class Main {
         int result = 0;
         // 방문배열을 노드별로 관리하기 위해 새로운 배열을 생성하여 초기값을 클론으로 할당
         int[] visitedClone = visited.clone();
+
 
         // 목표 단어와 일치할 경우 노드의 깊이를 반환한다.
         if(begin.equals(target))
@@ -79,7 +79,7 @@ public class Main {
         Queue<String> nextQueue = new LinkedList<>();
         int[] visited = new int[words.length];
         que.add(begin);
-
+//String[] words = {"hot", "dot", "dog", "lot", "log", "cog"};
         while(que.size()!=0){
             String current = que.poll();
             for(int i=0; i<words.length; i++) {

@@ -1,5 +1,3 @@
-package dfsbfs;
-
 public class Main {
 
     /*
