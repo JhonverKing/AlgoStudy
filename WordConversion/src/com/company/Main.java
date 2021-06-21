@@ -27,13 +27,10 @@ public class Main {
         String target = "cog";
         String[] words = {"hot", "dot", "dog", "lot", "log", "cog"};
 
-//        int[] visited = new int[words.length];
-//        answer = dfs(begin, target, words,0, visited);
-//        System.out.println("dfs : " + answer);
-//        System.out.println("bfs : " + bfs(begin, target, words));
-
-        JabbooTest jbtest = new JabbooTest();
-        jbtest.testMain(begin, target, words);
+        int[] visited = new int[words.length];
+        answer = dfs(begin, target, words,0, visited);
+        System.out.println("dfs : " + answer);
+        System.out.println("bfs : " + bfs(begin, target, words));
     }
 
     // 변경 가능한지 체크
