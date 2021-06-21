@@ -1,4 +1,4 @@
-package com.company;
+package algo;
 
 public class Main {
 
