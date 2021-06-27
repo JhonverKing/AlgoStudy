@@ -25,14 +25,13 @@ n	vertex	                                                    return
 
         answer = getaa(n, edge);
         System.out.println("answer : " + answer);
-	// write your code here
     }
 
     public static int getaa(int n, int[][] edge){
 
         Queue<Integer> curQue = new LinkedList<>();
         Queue<Integer> nextQue = new LinkedList<>();
-        int breakCheck = 1;
+        int nodeCnt = 1;
 
         int[] visitedEdge = new int[edge.length];
         int depth = 0;
@@ -45,39 +44,36 @@ n	vertex	                                                    return
                 if(visitedEdge[j] == 1) continue;
 
                 if(edge[j][0] == curNode || edge[j][1] == curNode){
-                    System.out.println("edge : " + edge[j][0] + ", " + edge[j][1]);
-                    for (int child:edge[j]) {
+//                    System.out.println("edge : " + edge[j][0] + ", " + edge[j][1]);
+                    for (int childNode:edge[j]) {
                         visitedEdge[j] = 1;
-                        if(child != curNode && !curQue.contains(child) && !nextQue.contains(child)) {
-                            nextQue.add(child);
-                            breakCheck++;
+
+                        // 자식노드가 현재노드와 같지않음 (중복 및 무한반복 제거를 위함)
+                        // 자식노드가 현재큐에 없음 (중복 및 무한반복 제거를 위함)
+                        // 자식노드가 다음큐에 없음 (중복 및 무한반복 제거를 위함)
+                        // ==> 자식노드를 다음 큐에 추가한다.
+                        if(childNode != curNode
+                                && !curQue.contains(childNode)
+                                && !nextQue.contains(childNode))
+                        {
+                            nextQue.add(childNode);
+                            nodeCnt++;
                         }
                     }
                 }
             }
             if(curQue.size() == 0) {
                 if(nextQue.size() > 0){
-                    System.out.println("nextQue : " + nextQue);
+//                    System.out.println("nextQue : " + nextQue);
                     curQue = nextQue;
                     nextQue = new LinkedList<>();
                     depth++;
 
-                    if(breakCheck == n)
+                    // nodeCnt와 노드크기가 일치하면 종료
+                    if(nodeCnt == n)
                         return curQue.size();
                 }
             }
-
-            // break check
-//            boolean isBreak = true;
-//            for(int j=0; j<visitedEdge.length; j++){
-//                if(visitedEdge[j] == 0){
-//                    isBreak = false;
-//                }
-//            }
-//            if(isBreak){
-//                System.out.println("depth : " + depth);
-//                return curQue.size();
-//            }
         }
     return 0;
     }
