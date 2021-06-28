@@ -21,8 +21,52 @@ n	vertex	                                                    return
         int[][] edge = {{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}};
         int answer = 0;
 
-        answer = getFarthestNodeCount(n, edge);
+//        answer = getFarthestNodeCount(n, edge);
+        int[] visitedNode = new int[n+1];
+        int[] distanceToNode = new int[n+1];
+        HashMap<Integer, List<Integer>> adjNodeList = getAdjNodeList(edge);
+        visitedNode[1] = 1;
+        answer = dfs(1, visitedNode, 0, adjNodeList, distanceToNode);
         System.out.println("answer : " + answer);
+    }
+    // 1 : 3, 2
+    // 1=[3, 2],
+    // 2=[3, 1, 4, 5],
+    // 3=[6, 4, 2, 1],
+    // 4=[3, 2],
+    // 5=[2],
+    // 6=[3]
+
+    public static int dfs(int curNode, int[] visitedEdge, int depth, HashMap<Integer, List<Integer>> adjNodeList, int[] distanceToNode){
+        System.out.println("curNode : " + curNode);
+        for(int adjNode : adjNodeList.get(curNode)){
+            int[] cloneVisitedEdge = visitedEdge.clone();
+            if(cloneVisitedEdge[adjNode] == 1) continue;
+
+            cloneVisitedEdge[adjNode] = 1;
+            int temp = dfs(adjNode, cloneVisitedEdge, depth+1, adjNodeList, distanceToNode);
+            if(distanceToNode[curNode] == 0 || distanceToNode[curNode] > temp)
+                distanceToNode[curNode] = temp;
+            if(distanceToNode[adjNode] == 0)
+                distanceToNode[adjNode] = depth + 1;
+            if(distanceToNode[adjNode] > temp)
+                distanceToNode[adjNode] = temp;
+        }
+
+        if(curNode == 1 && depth == 0){
+            int max = 0;
+            int cnt = 0;
+            for(int i=0; i< distanceToNode.length; i++){
+                if(max < distanceToNode[i]) {
+                    max = distanceToNode[i];
+                    cnt = 1;
+                }
+                else if(max == distanceToNode[i])
+                    cnt++;
+            }
+            return cnt;
+        }
+        return depth;
     }
 
     public static int getFarthestNodeCount(int n, int[][] edge){
@@ -173,6 +217,7 @@ n	vertex	                                                    return
         return 0;
     }
 
+
     public static HashMap<Integer, List<Integer>> getAdjNodeList(int[][] edge){
         HashMap<Integer, List<Integer>> adjNodeList = new HashMap<Integer, List<Integer>>();
 
@@ -192,6 +237,8 @@ n	vertex	                                                    return
                 nodeList.add(valueNode);
             }
         }
+
+        System.out.println("adjNodeList : " + adjNodeList);
 
         return adjNodeList;
     }
