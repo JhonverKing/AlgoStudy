@@ -1,5 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Main {
 /*
@@ -22,31 +21,33 @@ n	vertex	                                                    return
         int[][] edge = {{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}};
         int answer = 0;
 
-
-        answer = getaa(n, edge);
+        answer = getFarthestNodeCount(n, edge);
         System.out.println("answer : " + answer);
     }
 
-    public static int getaa(int n, int[][] edge){
+    public static int getFarthestNodeCount(int n, int[][] edge){
 
         Queue<Integer> curQue = new LinkedList<>();
         Queue<Integer> nextQue = new LinkedList<>();
-        int nodeCnt = 1;
-
         int[] visitedEdge = new int[edge.length];
+        int nodeCnt = 1;
         int depth = 0;
+        int cnt = 0;
 
+        // 시작노드
         curQue.add(1);
         while(curQue.size()!=0){
             int curNode = curQue.poll();
 
-            for(int j=0; j<edge.length; j++){
-                if(visitedEdge[j] == 1) continue;
+            for(int i=0; i<edge.length; i++){
+                cnt++;
+                if(visitedEdge[i] == 1)
+                    continue;
 
-                if(edge[j][0] == curNode || edge[j][1] == curNode){
-//                    System.out.println("edge : " + edge[j][0] + ", " + edge[j][1]);
-                    for (int childNode:edge[j]) {
-                        visitedEdge[j] = 1;
+                if(edge[i][0] == curNode || edge[i][1] == curNode){
+                    System.out.println("edge : " + edge[i][0] + ", " + edge[i][1]);
+                    for (int childNode:edge[i]) {
+                        visitedEdge[i] = 1;
 
                         // 자식노드가 현재노드와 같지않음 (중복 및 무한반복 제거를 위함)
                         // 자식노드가 현재큐에 없음 (중복 및 무한반복 제거를 위함)
@@ -64,7 +65,56 @@ n	vertex	                                                    return
             }
             if(curQue.size() == 0) {
                 if(nextQue.size() > 0){
-//                    System.out.println("nextQue : " + nextQue);
+                    System.out.println("nextQue : " + nextQue);
+                    curQue = nextQue;
+                    nextQue = new LinkedList<>();
+                    depth++;
+
+                    // nodeCnt와 노드크기가 일치하면 종료
+                    if(nodeCnt == n){
+                        System.out.println("cnt : " + cnt);
+                        return curQue.size();
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    public static int getFarthestNodeCount2(int n, int[][] edge){
+        Queue<Integer> curQue = new LinkedList<>();
+        Queue<Integer> nextQue = new LinkedList<>();
+        int[] visitedEdge = new int[n+1];
+        int nodeCnt = 1;
+        int depth = 0;
+
+        // 시작노드
+        curQue.add(1);
+        visitedEdge[1] = 1;
+        while(curQue.size()!=0){
+            int curNode = curQue.poll();
+
+            for(int i=0; i<edge.length; i++){
+                for(int j=0; j<2; j++){
+
+                    if(edge[i][j] == curNode){
+                        int childNode = 0;
+
+                        if(j==0) childNode = edge[i][1];
+                        else childNode = edge[i][0];
+
+                        if(visitedEdge[childNode] == 1)
+                            continue;
+                        System.out.println("edge : " + edge[i][0] + ", " + edge[i][1]);
+                        nextQue.add(childNode);
+                        nodeCnt++;
+                        visitedEdge[childNode] = 1;
+                    }
+                }
+            }
+            if(curQue.size() == 0) {
+                if(nextQue.size() > 0){
+                    System.out.println("nextQue : " + nextQue);
                     curQue = nextQue;
                     nextQue = new LinkedList<>();
                     depth++;
@@ -75,7 +125,74 @@ n	vertex	                                                    return
                 }
             }
         }
-    return 0;
+        return 0;
     }
 
+    public static int getFarthestNodeCount3(int n, int[][] edge){
+        HashMap<Integer, List<Integer>> adjNodeList = getAdjNodeList(edge);
+        Queue<Integer> curQue = new LinkedList<>();
+        Queue<Integer> nextQue = new LinkedList<>();
+        int[] visitedEdge = new int[n+1];
+        int nodeCnt = 1;
+        int depth = 0;
+        int cnt = 0;
+
+        curQue.add(1);
+        visitedEdge[1] = 1;
+
+        while(!curQue.isEmpty()){
+            int curNode = curQue.poll();
+
+            System.out.println("adjNode : " + adjNodeList.get(curNode));
+            for(int adjNode : adjNodeList.get(curNode)){
+                cnt++;
+                if(visitedEdge[adjNode] == 1) continue;
+
+                visitedEdge[adjNode] = 1;
+                nextQue.add(adjNode);
+                nodeCnt++;
+            }
+
+            if(curQue.isEmpty()) {
+                if(!nextQue.isEmpty()){
+                    System.out.println("nextQue : " + nextQue);
+                    curQue = nextQue;
+                    nextQue = new LinkedList<>();
+                    depth++;
+
+                    // nodeCnt와 노드크기가 일치하면 종료
+                    if(nodeCnt == n){
+                        System.out.println("cnt : " + cnt);
+                        return curQue.size();
+                    }
+                }
+            }
+        }
+
+
+        return 0;
+    }
+
+    public static HashMap<Integer, List<Integer>> getAdjNodeList(int[][] edge){
+        HashMap<Integer, List<Integer>> adjNodeList = new HashMap<Integer, List<Integer>>();
+
+        for(int[] node:edge){
+            List<Integer> nodeList;
+
+            for(int i=0; i<2; i++){
+                int keyNode = node[i];
+                int valueNode = node[i==0 ? 1 : 0];
+
+                if(!adjNodeList.containsKey(keyNode)){
+                    nodeList = new ArrayList<Integer>();
+                    adjNodeList.put(keyNode, nodeList);
+                }
+
+                nodeList = adjNodeList.get(keyNode);
+                nodeList.add(valueNode);
+            }
+        }
+
+        return adjNodeList;
+    }
 }
