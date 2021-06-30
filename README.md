@@ -2,6 +2,10 @@
 > 잡부 : https://github.com/lordchiwoo/algo_programmers  
 > 강서 : https://github.com/mertyn88/algorithm  
 > 가니 : https://github.com/kwan1989/algorithm_Programmers
+
+> 프로그래머스나 기타 알고리즘 문제를 각자의 방법으로 해결하고 각자 깃허브에 업로드 함.  
+> 이후 디스코드 화면 공유로 리뷰 진행  
+
 ---
 
 ## 순위
@@ -12,7 +16,6 @@
 <summary>내용 보기</summary>
 
 </details>
----
 
 
 ## 가장 먼 노드
@@ -23,7 +26,6 @@
 <summary>내용 보기</summary>
 
 </details>
----
 
 
 ## 단어변환
