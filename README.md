@@ -9,6 +9,7 @@
 
 ## 가장 먼 노드
 >##### 그래프
+>### 문제 및 풀이
 >[Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
 >[Git Solution]()
 ><details markdown="1">
