@@ -1,7 +1,5 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 /*
 n명의 권투선수가 권투 대회에 참여했고 각각 1번부터 n번까지 번호를 받았습니다.
@@ -81,12 +79,13 @@ public class Main {
                 int nextNode = result[1];
                 HashSet<Integer> lowerThanNextNode;
 
-                // nextNode가 완료된 노드면
-                // nextNode가 가지고 있는 노드리스트를 가져와서 현재 노드리스트에 추가한다.
+                // nextNode가 방문완료된 노드면
+                // nextNode 보다 낮은 노드 리스트를 가져와서 현재 노드 보다 낮은 노드 리스트에 추가한다.
                 if(visited[nextNode] == 1) {
                     lowerThanNextNode = winnerHashMap.get(nextNode);
                 }
-                // nextNode가 완료되지 않은 노드면 노드를 구하고
+                // nextNode가 방문완료가 아니면
+                // 재귀 실행해서 nextNode 보다 낮은 노드 리스트를 가져와서 현재 노드 보다 낮은 노드 리스트에 추가한다.
                 else {
                     lowerThanNextNode = dfs(nextNode, results, visited, winnerHashMap);
                 }
@@ -95,9 +94,8 @@ public class Main {
             }
         }
 
-        HashSet<Integer> newlist;
-        newlist = winnerHashMap.get(target);
-        newlist.addAll(lowerThanCurrentNode);
+        // 해쉬맵에 현재 노드보다 낮은 노드 리스트를 추가함
+        winnerHashMap.get(target).addAll(lowerThanCurrentNode);
 
         visited[target] = 1;
         return lowerThanCurrentNode;
