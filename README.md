@@ -3,8 +3,9 @@
 > 강서 : https://github.com/mertyn88/algorithm  
 > 가니 : https://github.com/kwan1989/algorithm_Programmers
 
+진행방법
 > 프로그래머스나 기타 알고리즘 문제를 각자의 방법으로 해결하고 각자 깃허브에 업로드 함.  
-> 이후 디스코드 화면 공유로 리뷰 진행  
+> 이후 디스코드 화면 공유로 문제 해결 과정에 대한 리뷰를 진행 함. 
 
 ---
 
