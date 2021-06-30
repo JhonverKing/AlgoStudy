@@ -8,22 +8,22 @@
 
 
 ## 가장 먼 노드
-# 그래프
+#### 그래프
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
 [Git Solution]()
 
 ## 단어변환
-# BFS/DFS
+#### BFS/DFS
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43163)  
 [Git Solution]()
 
 ## 네트워크
-# BFS/DFS
+#### BFS/DFS
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43162)  
 [Git Solution]()
 
 ## 타겟넘버
-# BFS/DFS
+#### BFS/DFS
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43165)
 [Git Solution]()
 
