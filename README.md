@@ -9,12 +9,12 @@
 
 ## 가장 먼 노드
 >##### 그래프
-[Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
-[Git Solution]()
-<details markdown="1">
-<summary>펼치기</summary>
-
-</details>
+>[Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
+>[Git Solution]()
+><details markdown="1">
+><summary>내용 보기</summary>
+>
+></details>
 
 ## 단어변환
 #### BFS/DFS
