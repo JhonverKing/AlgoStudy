@@ -21,12 +21,12 @@ n	vertex	                                                    return
         int[][] edge = {{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}};
         int answer = 0;
 
-//        answer = getFarthestNodeCount(n, edge);
-        int[] visitedNode = new int[n+1];
-        int[] distanceToNode = new int[n+1];
-        HashMap<Integer, List<Integer>> adjNodeList = getAdjNodeList(edge);
-        visitedNode[1] = 1;
-        answer = dfs(1, visitedNode, 0, adjNodeList, distanceToNode);
+        answer = getFarthestNodeCount3(n, edge);
+//        int[] visitedNode = new int[n+1];
+//        int[] distanceToNode = new int[n+1];
+//        HashMap<Integer, List<Integer>> adjNodeList = getAdjNodeList(edge);
+//        visitedNode[1] = 1;
+//        answer = dfs(1, visitedNode, 0, adjNodeList, distanceToNode);
         System.out.println("answer : " + answer);
     }
     // 1 : 3, 2
@@ -39,18 +39,20 @@ n	vertex	                                                    return
 
     public static int dfs(int curNode, int[] visitedEdge, int depth, HashMap<Integer, List<Integer>> adjNodeList, int[] distanceToNode){
         System.out.println("curNode : " + curNode);
+
+        if(distanceToNode[curNode] == 0 || distanceToNode[curNode] > depth)
+        distanceToNode[curNode] = depth;
+
         for(int adjNode : adjNodeList.get(curNode)){
             int[] cloneVisitedEdge = visitedEdge.clone();
             if(cloneVisitedEdge[adjNode] == 1) continue;
 
             cloneVisitedEdge[adjNode] = 1;
-            int temp = dfs(adjNode, cloneVisitedEdge, depth+1, adjNodeList, distanceToNode);
-            if(distanceToNode[curNode] == 0 || distanceToNode[curNode] > temp)
-                distanceToNode[curNode] = temp;
-            if(distanceToNode[adjNode] == 0)
-                distanceToNode[adjNode] = depth + 1;
-            if(distanceToNode[adjNode] > temp)
-                distanceToNode[adjNode] = temp;
+
+            if(distanceToNode[adjNode]==0 || distanceToNode[adjNode] > (depth + 1)  )
+            {
+                dfs(adjNode, cloneVisitedEdge, depth+1, adjNodeList, distanceToNode);
+            }
         }
 
         if(curNode == 1 && depth == 0){
@@ -66,8 +68,40 @@ n	vertex	                                                    return
             }
             return cnt;
         }
-        return depth;
+        return 0;
     }
+
+//    public static int dfs(int curNode, int[] visitedEdge, int depth, HashMap<Integer, List<Integer>> adjNodeList, int[] distanceToNode){
+//        System.out.println("curNode : " + curNode);
+//        for(int adjNode : adjNodeList.get(curNode)){
+//            int[] cloneVisitedEdge = visitedEdge.clone();
+//            if(cloneVisitedEdge[adjNode] == 1) continue;
+//
+//            cloneVisitedEdge[adjNode] = 1;
+//            int temp = dfs(adjNode, cloneVisitedEdge, depth+1, adjNodeList, distanceToNode);
+//            if(distanceToNode[curNode] == 0 || distanceToNode[curNode] > temp)
+//                distanceToNode[curNode] = temp;
+//            if(distanceToNode[adjNode] == 0)
+//                distanceToNode[adjNode] = depth + 1;
+//            if(distanceToNode[adjNode] > temp)
+//                distanceToNode[adjNode] = temp;
+//        }
+//
+//        if(curNode == 1 && depth == 0){
+//            int max = 0;
+//            int cnt = 0;
+//            for(int i=0; i< distanceToNode.length; i++){
+//                if(max < distanceToNode[i]) {
+//                    max = distanceToNode[i];
+//                    cnt = 1;
+//                }
+//                else if(max == distanceToNode[i])
+//                    cnt++;
+//            }
+//            return cnt;
+//        }
+//        return depth;
+//    }
 
     public static int getFarthestNodeCount(int n, int[][] edge){
 
@@ -76,7 +110,6 @@ n	vertex	                                                    return
         int[] visitedEdge = new int[edge.length];
         int nodeCnt = 1;
         int depth = 0;
-        int cnt = 0;
 
         // 시작노드
         curQue.add(1);
@@ -84,7 +117,6 @@ n	vertex	                                                    return
             int curNode = curQue.poll();
 
             for(int i=0; i<edge.length; i++){
-                cnt++;
                 if(visitedEdge[i] == 1)
                     continue;
 
@@ -116,7 +148,6 @@ n	vertex	                                                    return
 
                     // nodeCnt와 노드크기가 일치하면 종료
                     if(nodeCnt == n){
-                        System.out.println("cnt : " + cnt);
                         return curQue.size();
                     }
                 }
@@ -179,7 +210,6 @@ n	vertex	                                                    return
         int[] visitedEdge = new int[n+1];
         int nodeCnt = 1;
         int depth = 0;
-        int cnt = 0;
 
         curQue.add(1);
         visitedEdge[1] = 1;
@@ -189,7 +219,6 @@ n	vertex	                                                    return
 
             System.out.println("adjNode : " + adjNodeList.get(curNode));
             for(int adjNode : adjNodeList.get(curNode)){
-                cnt++;
                 if(visitedEdge[adjNode] == 1) continue;
 
                 visitedEdge[adjNode] = 1;
@@ -197,6 +226,7 @@ n	vertex	                                                    return
                 nodeCnt++;
             }
 
+            // Que List = 주소값
             if(curQue.isEmpty()) {
                 if(!nextQue.isEmpty()){
                     System.out.println("nextQue : " + nextQue);
@@ -206,7 +236,6 @@ n	vertex	                                                    return
 
                     // nodeCnt와 노드크기가 일치하면 종료
                     if(nodeCnt == n){
-                        System.out.println("cnt : " + cnt);
                         return curQue.size();
                     }
                 }

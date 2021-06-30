@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /*
@@ -19,23 +20,6 @@ results 배열 각 행 [A, B]는 A 선수가 B 선수를 이겼다는 의미입�
 n	results	                                    return
 5	[[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]	2
 
-// 돌면서 이긴애들 리스트를 작성해야함
-// 돌면서 방문체크
-1 2 3 4 5
-1 1 1 1 1
-
-4 = 3 2 5
-3 = 2 5
-2 = 5
-5 = X
-1 = 2 5
-
-// 리스트 돌면서 컨테인 카운트
-1 = 0
-2 = 3
-4 = 0
-3 = 1
-5 = 4
 
 // 이긴 리스트 카운트 + 진 리스트 카운트
 // 이게 맴버수-1 이면 확정
@@ -48,123 +32,74 @@ public class Main {
 
     public static void main(String[] args) {
         int n = 5; // 선수의 수
-        int[][] results = {{4, 3}, {4, 2}, {3, 2}, {1, 2}, {2, 5}}; // 경기결과
+//        int[][] results = {{4, 3}, {4, 2}, {3, 2}, {1, 2}, {2, 5}}; // 경기결과
+        int[][] results = {{3, 5}, {4, 2}, {4, 5}, {5, 1}, {5, 2}}; // 경기결과
         int answer = 0;
 
+        // 기초데이타
         int[] visited = new int[n+1];
-        HashMap<Integer, List<Integer>> winnerHashMap = new HashMap<>();
-//        winnerHashMap = dfs(4, 0, results, visited, true, winnerHashMap);
-//        System.out.println("winnerHashMap : " + winnerHashMap);
-//        System.out.println("answer : " + answer);
-
-
-        for(int i=0; i<results.length; i++){
-            /*
-            List<Integer> subList;
-            if(!winnerHashMap.containsKey(results[i][0])){
-                subList = new ArrayList<Integer>();
-                winnerHashMap.put(results[i][0], subList);
-            }
-            subList = winnerHashMap.get(results[i][0]);
-            subList.addAll(dfs(results[i][0], results, visited, winnerHashMap));
-            */
-            dfs(results[i][0], results, visited, winnerHashMap);
+        HashMap<Integer, HashSet<Integer>> winnerHashMap = new HashMap<>();
+        for(int i=1; i<n+1; i++){
+            winnerHashMap.put(i, new HashSet<Integer>());
         }
 
+        // 해쉬맵 데이타 완성
+        for(int i=1; i<n+1; i++){
+            dfs(i, results, visited, winnerHashMap);
+        }
+
+        // 완성된 해쉬맵에서
+        // 특정 넘버의 list.size() 와
+        // 특정 넘버를 이긴 수를 더하여 카운트
         int[] loseCountArray = new int[n+1];
         for(int i=1; i<n+1; i++){
             loseCountArray[i] = loseCountArray[i] + winnerHashMap.get(i).size();
-            for(int j=1; j<n+1; j++){
-                if(winnerHashMap.get(j).contains(i))
-                    loseCountArray[i]++;
+            for(int a :winnerHashMap.get(i)){
+                loseCountArray[a]++;
             }
         }
 
-
-        for(int i=0; i<n+1; i++){
-            if(loseCountArray[i] == n-1)answer++;
-//            System.out.println("loseCountArray[" + i + "] : " + loseCountArray[i] );
+        // 카운트가 n-1 이면 순위가 확실한 멤버 카운트 +1
+        for(int i=1; i<n+1; i++){
+            if(loseCountArray[i] == n-1)
+                answer++;
+//            System.out.println("loseCountArray[" + i + "] : " + loseCountArray[i]);
         }
-
         System.out.println("answer : " + answer);
-
-
-//        System.out.println("list : " + dfs(4, results, visited, winnerHashMap));
-//        System.out.println("winnerHashMap : " + winnerHashMap);
+        System.out.println("winnerHashMap : " + winnerHashMap);
     }
 
-    public static List<Integer> dfs(int target, int[][] results, int[] visited,
-                           HashMap<Integer, List<Integer>> winnerHashMap) {
+    public static HashSet<Integer> dfs(int target, int[][] results, int[] visited,
+                                    HashMap<Integer, HashSet<Integer>> winnerHashMap) {
 
-//        if(visited[target] == 1) return new ArrayList<>();
-
-        List<Integer> returnList;
-
-        if(!winnerHashMap.containsKey(target)){
-            returnList = new ArrayList<Integer>();
-            winnerHashMap.put(target, returnList);
-        }
-        returnList = winnerHashMap.get(target);
+        if(visited[target] == 1) return null;
+        HashSet<Integer> lowerThanCurrentNode = new HashSet<Integer>();
 
         for(int[] result : results){
             // 타겟과 일치하는 노드를 발견
             if(target == result[0]){
                 int nextNode = result[1];
+                HashSet<Integer> lowerThanNextNode;
 
-                if(visited[result[1]] == 1) {
-                    if(returnList.contains(nextNode))
-                        continue;
-                    else {
-                        if(winnerHashMap.containsKey(nextNode)){
-                            returnList.addAll(winnerHashMap.get(nextNode));
-                            returnList.add(nextNode);
-                            continue;
-                        }
-                    }
-
+                // nextNode가 완료된 노드면
+                // nextNode가 가지고 있는 노드리스트를 가져와서 현재 노드리스트에 추가한다.
+                if(visited[nextNode] == 1) {
+                    lowerThanNextNode = winnerHashMap.get(nextNode);
                 }
-
-                List<Integer> subList = dfs(nextNode, results, visited, winnerHashMap);
-                // 리턴할 리스트
-                returnList.add(nextNode);
-                returnList.addAll(subList);
+                // nextNode가 완료되지 않은 노드면 노드를 구하고
+                else {
+                    lowerThanNextNode = dfs(nextNode, results, visited, winnerHashMap);
+                }
+                lowerThanCurrentNode.add(nextNode);
+                lowerThanCurrentNode.addAll(lowerThanNextNode);
             }
         }
 
+        HashSet<Integer> newlist;
+        newlist = winnerHashMap.get(target);
+        newlist.addAll(lowerThanCurrentNode);
 
         visited[target] = 1;
-        return returnList;
+        return lowerThanCurrentNode;
     }
-
-    public static HashMap<Integer, List<Integer>> dfs(int targetNode, int resultNum, int[][] results, int[] visited, boolean isWinner,
-                                                      HashMap<Integer, List<Integer>> winnerHashMap){
-//        if(visited[resultNum] == 1)
-//            return winnerHashMap;
-
-
-        System.out.println("targetNode : " + targetNode);
-//        System.out.println("resultNum : " + resultNum);
-        for (int i=0; i<results.length; i++){
-            if(visited[i] == 1) continue;
-
-            if(targetNode == results[i][0]){
-                int nextNode = results[i][1];
-                System.out.println("nextNode : " + nextNode);
-                List<Integer> nodeList;
-                if(!winnerHashMap.containsKey(targetNode)){
-                    nodeList = new ArrayList<Integer>();
-                    winnerHashMap.put(targetNode, nodeList);
-                }
-                nodeList = winnerHashMap.get(targetNode);
-                nodeList.add(results[i][1]);
-
-                // winner
-                visited[resultNum] = 1;
-                dfs(nextNode, i, results, visited, isWinner, winnerHashMap);
-            }
-        }
-        System.out.println("not find node : " + targetNode);
-        return winnerHashMap;
-    }
-
 }
