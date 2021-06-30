@@ -12,7 +12,7 @@
 >[Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
 >[Git Solution]()
 ><details markdown="1">
-><summary>###내용 보기</summary>
+><summary>### 내용 보기</summary>
 >
 ></details>
 
