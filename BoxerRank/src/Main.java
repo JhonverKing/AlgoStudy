@@ -80,15 +80,17 @@ public class Main {
             }
         }
 
+
         for(int i=0; i<n+1; i++){
-            System.out.println("loseCountArray[" + i + "] : " + loseCountArray[i] );
+            if(loseCountArray[i] == n-1)answer++;
+//            System.out.println("loseCountArray[" + i + "] : " + loseCountArray[i] );
         }
 
-
+        System.out.println("answer : " + answer);
 
 
 //        System.out.println("list : " + dfs(4, results, visited, winnerHashMap));
-        System.out.println("winnerHashMap : " + winnerHashMap);
+//        System.out.println("winnerHashMap : " + winnerHashMap);
     }
 
     public static List<Integer> dfs(int target, int[][] results, int[] visited,
@@ -107,9 +109,21 @@ public class Main {
         for(int[] result : results){
             // 타겟과 일치하는 노드를 발견
             if(target == result[0]){
-                if(visited[result[1]] == 1)
-                    continue;
                 int nextNode = result[1];
+
+                if(visited[result[1]] == 1) {
+                    if(returnList.contains(nextNode))
+                        continue;
+                    else {
+                        if(winnerHashMap.containsKey(nextNode)){
+                            returnList.addAll(winnerHashMap.get(nextNode));
+                            returnList.add(nextNode);
+                            continue;
+                        }
+                    }
+
+                }
+
                 List<Integer> subList = dfs(nextNode, results, visited, winnerHashMap);
                 // 리턴할 리스트
                 returnList.add(nextNode);
