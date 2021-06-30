@@ -1,6 +1,6 @@
 참여인원 4
 > 잡부 : https://github.com/lordchiwoo/algo_programmers  
-> 강서 : https://github.com/mertyn88/algorithm
+> 강서 : https://github.com/mertyn88/algorithm  
 > 가니 : https://github.com/kwan1989/algorithm_Programmers
 ---
 
