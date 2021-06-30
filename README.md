@@ -7,12 +7,12 @@
 ## 순위
 
 
-## 가장 먼 노드
->### 문제 및 풀이
+##가장 먼 노드
+>###문제 및 풀이
 >[Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
 >[Git Solution]()
 ><details markdown="1">
-><summary>내용 보기</summary>
+><summary>###내용 보기</summary>
 >
 ></details>
 
