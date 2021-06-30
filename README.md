@@ -8,7 +8,6 @@
 
 
 ## 가장 먼 노드
->##### 그래프
 >### 문제 및 풀이
 >[Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
 >[Git Solution]()
@@ -18,18 +17,26 @@
 ></details>
 
 ## 단어변환
-#### BFS/DFS
-[Programmers](https://programmers.co.kr/learn/courses/30/lessons/43163)  
-[Git Solution]()
+>[Programmers](https://programmers.co.kr/learn/courses/30/lessons/43163)  
+>[Git Solution]()
+><details markdown="1">
+><summary>내용 보기</summary>
+>
+></details>
 
 ## 네트워크
-#### BFS/DFS
-[Programmers](https://programmers.co.kr/learn/courses/30/lessons/43162)  
-[Git Solution]()
+>[Programmers](https://programmers.co.kr/learn/courses/30/lessons/43162)  
+>[Git Solution]()
+><details markdown="1">
+><summary>내용 보기</summary>
+>
+></details>
 
 ## 타겟넘버
-#### BFS/DFS
-[Programmers](https://programmers.co.kr/learn/courses/30/lessons/43165)
-[Git Solution]()
-
+>[Programmers](https://programmers.co.kr/learn/courses/30/lessons/43165)
+>[Git Solution]()
+><details markdown="1">
+><summary>내용 보기</summary>
+>
+></details>
 
