@@ -31,9 +31,14 @@ public class Main {
     public static void main(String[] args) {
         int n = 5; // 선수의 수
 //        int[][] results = {{4, 3}, {4, 2}, {3, 2}, {1, 2}, {2, 5}}; // 경기결과
-        int[][] results = {{3, 5}, {4, 2}, {4, 5}, {5, 1}, {5, 2}}; // 경기결과
+//        int[][] results = {{3, 5}, {4, 2}, {4, 5}, {5, 1}, {5, 2}}; // 경기결과
+        int[][] results = {{1, 4}, {4, 2}, {2, 5}, {5, 3}};
         int answer = 0;
 
+        graph(n, results);
+    }
+    public static int graph2(int n, int[][] results){
+        int answer = 0;
         // 기초데이타
         int[] visited = new int[n+1];
         HashMap<Integer, HashSet<Integer>> winnerHashMap = new HashMap<>();
@@ -61,10 +66,12 @@ public class Main {
         for(int i=1; i<n+1; i++){
             if(loseCountArray[i] == n-1)
                 answer++;
-//            System.out.println("loseCountArray[" + i + "] : " + loseCountArray[i]);
+            // System.out.println("loseCountArray[" + i + "] : " + loseCountArray[i]);
         }
         System.out.println("answer : " + answer);
         System.out.println("winnerHashMap : " + winnerHashMap);
+
+        return answer;
     }
 
     public static HashSet<Integer> dfs(int target, int[][] results, int[] visited,
@@ -81,11 +88,11 @@ public class Main {
 
                 // nextNode가 방문완료된 노드면
                 // nextNode 보다 낮은 노드 리스트를 가져와서 현재 노드 보다 낮은 노드 리스트에 추가한다.
+                // nextNode가 방문완료가 아니면
+                // 재귀 실행해서 nextNode 보다 낮은 노드 리스트를 가져와서 현재 노드 보다 낮은 노드 리스트에 추가한다.
                 if(visited[nextNode] == 1) {
                     lowerThanNextNode = winnerHashMap.get(nextNode);
                 }
-                // nextNode가 방문완료가 아니면
-                // 재귀 실행해서 nextNode 보다 낮은 노드 리스트를 가져와서 현재 노드 보다 낮은 노드 리스트에 추가한다.
                 else {
                     lowerThanNextNode = dfs(nextNode, results, visited, winnerHashMap);
                 }
@@ -99,5 +106,48 @@ public class Main {
 
         visited[target] = 1;
         return lowerThanCurrentNode;
+    }
+
+    public static int graph(int n, int[][] results){
+
+        int[][] graph = new int[n+1][n+1];
+        for(int i=0; i< results.length; i++){
+            graph[results[i][0]][results[i][1]] = 1;
+        }
+
+        // 가로로 트루 찾다가 발견시
+        // grahph[j][i] == 1
+        // => row에 첫번째 셀부터 마지막쌜까지 1인걸 찾는다
+        // graph[i][k] == 1
+        // => 발견한 row가 i 컬럼에서 1인걸 찾아서 앞에서 찾았던 컬럼에다가 넣음
+        for(int i=1; i<n+1; i++){
+            for(int j=1; j<n+1; j++){
+                for(int k=1; k<n+1; k++){
+                    if(j!=k && graph[j][i] == 1 && graph[i][k] == 1) {
+                        graph[j][k] = 1;
+                        // System.out.println("[" + j + "][" + i + "], [" + i + "][" + k + "]");
+                        // System.out.println("[" + j + "][" + k + "] = " + graph[j][k]);
+                    }
+                }
+            }
+        }
+
+        int[] cnt = new int[n+1];
+        for(int i=1; i<n+1; i++){
+            for(int j=1; j<n+1; j++){
+                if(graph[i][j] == 1) cnt[i]++;
+                if(graph[j][i] == 1) cnt[i]++;
+            }
+        }
+
+        int answer = 0;
+        for(int i=1; i<n+1; i++) {
+            System.out.println("cnt[" + i + "] : " + cnt[i]);
+            if(cnt[i] == n-1)
+                answer++;
+        }
+
+        System.out.println("answer : " + answer);
+        return answer;
     }
 }
