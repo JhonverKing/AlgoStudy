@@ -14,6 +14,10 @@
 [Programmers]()  
 [Git Solution]()  
 
+
+<details markdown="1">
+  <summary>###내용 보기</summary>
+
 ### 문제내용
 n명의 권투선수가 권투 대회에 참여했고 각각 1번부터 n번까지 번호를 받았습니다.
 권투 경기는 1대1 방식으로 진행이 되고, 만약 A 선수가 B 선수보다 실력이 좋다면 A 선수는 B 선수를 항상 이깁니다.
@@ -31,9 +35,6 @@ results 배열 각 행 [A, B]는 A 선수가 B 선수를 이겼다는 의미입�
 |5|[[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]||2|  
 
 ### 풀이과정
-
-<details markdown="1">
-<summary>내용 보기</summary>
 
 
 </details>
