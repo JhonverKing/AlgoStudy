@@ -87,7 +87,7 @@ n명의 권투선수가 권투 대회에 참여했고 각각 1번부터 n번까�
 ## 가장 먼 노드 (2021.06.28)  
 ### 문제 및 풀이  
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
-[Git Solution]()  
+[Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/FarthestNode/src/Main.java)  
 <details markdown="1">
   <summary>내용 보기</summary>
   
