@@ -11,8 +11,8 @@
 
 ## 순위
 ### 문제 및 풀이
-[Programmers]()  
-[Git Solution]()  
+[Programmers](https://programmers.co.kr/learn/courses/30/lessons/49191)  
+[Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/BoxerRank/src/Main.java)  
 
 <details markdown="1">
   <summary>내용 보기</summary>
