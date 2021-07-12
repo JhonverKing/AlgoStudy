@@ -8,7 +8,7 @@
 > 이후 디스코드 화면 공유로 문제 해결 과정에 대한 리뷰를 진행 함. 
 
 ---
-## 입국심사
+## 입국심사 (2021.07.12)  
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43238)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/Immigration/src/Main.java)  
@@ -68,7 +68,7 @@ n명이 입국심사를 위해 줄을 서서 기다리고 있습니다.
     테스트 9 〉	통과 (0.49ms, 52.3MB)
 </details>
 
-## 순위
+## 순위 (2021.07.05)  
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/49191)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/BoxerRank/src/Main.java)  
