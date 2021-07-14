@@ -8,7 +8,7 @@
 > 이후 디스코드 화면 공유로 문제 해결 과정에 대한 리뷰를 진행 함. 
 
 ---
-## 자물쇠와 열쇠 (2021.07.19) - 2020 KAKAO BLIND RECRUITMENT
+## 자물쇠와 열쇠 - 2020 KAKAO BLIND RECRUITMENT - 2021.07.19
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/60059)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/LockAndKey/src/Main.java)  
@@ -100,7 +100,7 @@
 
 </details>
 
-## 입국심사 (2021.07.12)  
+## 입국심사 - 이분탐색 - 2021.07.12  
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43238)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/Immigration/src/Main.java)  
@@ -160,7 +160,7 @@ n명이 입국심사를 위해 줄을 서서 기다리고 있습니다.
     테스트 9 〉	통과 (0.49ms, 52.3MB)
 </details>
 
-## 순위 (2021.07.05)  
+## 순위 - 그래프 - 2021.07.05  
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/49191)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/BoxerRank/src/Main.java)  
@@ -235,7 +235,7 @@ n명의 권투선수가 권투 대회에 참여했고 각각 1번부터 n번까�
 </details>
 
 
-## 가장 먼 노드 (2021.06.28)  
+## 가장 먼 노드 - 그래프 - 2021.06.28  
 ### 문제 및 풀이  
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/49189)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/FarthestNode/src/Main.java)  
@@ -289,7 +289,7 @@ n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까�
 </details>
 
 
-## 단어변환 (2021.06.21)  
+## 단어변환 - 깊이/너비 우선 탐색(DFS/BFS) - 2021.06.21  
 ### 문제 및 풀이  
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43163)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/WordConversion/src/Main.java)  
@@ -361,7 +361,7 @@ n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까�
 </details>
 
 
-## 네트워크 (2021.06.14)  
+## 네트워크 - 깊이/너비 우선 탐색(DFS/BFS) - 2021.06.14  
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43162)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/Network/src/Main.java)  
@@ -421,7 +421,7 @@ n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까�
 </details>
 
 
-## 타겟넘버 (2021.06.07)  
+## 타겟넘버 - 깊이/너비 우선 탐색(DFS/BFS) - 2021.06.07  
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/43165)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/TargetNumber/src/Main.java)  
