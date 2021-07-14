@@ -1,57 +1,54 @@
 public class Main {
     /*
-    시작할수 있는 좌표부터 ( 크기 3이면 -2~2 )
-    회전방향 1~4 까지 돌면서 비교
-    모든방향 비교후 좌표 +1
-    반복
-
+    초기구상
+        현재 위치에서 90도씩 회전하면서 열쇠가 맞는지 확인.
+        현재 위치를 1씩 변경시켜서 전체 범위를 탐색 반복
+        열쇠와 자물쇠가 최소 한칸 이상 겹쳐야함
      */
 
     public static void main(String[] args) {
 //        int[][] key = {{0, 0, 0}, {1, 0, 0}, {0, 1, 1}};
 //        int[][] lock = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 0, 1}, {1, 0, 1, 1}};
-        int[][] key = {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}};
+        int[][] key = {{1, 1, 1}, {1, 1, 1}, {1, 1, 0}};
         int[][] lock = {{1, 1, 1, 1}, {0, 0, 0, 1}, {0, 0, 0, 1}, {0, 0, 0, 1}};
 
-        tryOpen(key, lock);
+        boolean answer = true;
+        answer = openProcess(key, lock);
+
+        System.out.println("answer : " + answer);
     }
 
     //
-    public static boolean tryOpen(int[][] key, int[][] lock){
-        int startOffset = (lock.length-1) * -1;
-        int x=startOffset;
-        int y=startOffset;
+    public static boolean openProcess(int[][] key, int[][] lock){
+        int startPosition = (key.length-1) * -1;
+        int positionX = startPosition;
+        int positionY = startPosition;
         while(true){
+            // 방향별로 열쇠가 맞는지 확인
             for(int i=0; i<4; i++){
-                if(canOpen(key, lock, x, y)) {
-                    System.out.println("true");
+                if(canOpen(key, lock, positionX, positionY)) {
                     return true;
                 }
-                else {
-                    System.out.println("false");
-                }
-                key = rotate(key);
+                key = getRotatedKey(key);
             }
 
-            if(x < lock.length - 1){
-                x++;
+            // 열쇠를 이동한다
+            if(positionX < lock.length - 1){
+                positionX++;
             }
-            else{
-                if(y <= lock.length - 1){
-                    x=startOffset;
-                    y++;
-                }
-                else
-                {
-                    System.out.println("범위초과");
-                    return false;
-                }
+            else if(positionY < lock.length - 1){
+                positionX = startPosition;
+                positionY++;
+            }
+            else
+            {
+                return false;
             }
         }
     }
 
-    // 회전
-    public static int[][] rotate(int[][] key) {
+    // key를 90도 회전한다.
+    public static int[][] getRotatedKey(int[][] key) {
         int n = key.length;
         int[][] result = new int[n][n];
         for(int i = 0; i < n; i++){
@@ -62,60 +59,24 @@ public class Main {
         return result;
     }
 
-    // 검사
-    public static boolean canOpen(int[][] key, int[][] lock, int offsetX, int offsetY){
-
+    // 지정된 위치에서 key가 lock을 열 수 있는지 확인한다.
+    public static boolean canOpen(int[][] key, int[][] lock, int positionX, int positionY){
 
         for (int i=0; i< lock.length; i++){
             for(int j=0; j< lock.length; j++){
-                // i : Y
-                // j : X
-                if(i >= offsetY && i < key.length + offsetY
-                    && j >= offsetX && j < key.length + offsetX){
-                    System.out.println("left : " + (i) + " | right : " + (j));
-                    if((key[i-offsetY][j-offsetX] ^ lock[i][j]) == 0){
+                // 자물쇠의 칸이 열쇠와 겹치는 부분을 XOR
+                if(i >= positionY && i < positionY + key.length
+                        && j >= positionX && j < positionX + key.length){
+                    if((key[i-positionY][j-positionX] ^ lock[i][j]) == 0){
                         return false;
                     }
                 }
-                else{
-                    if(lock[i][j] == 0)
-                        return false;
+                // 열쇠와 겹치지 않는 부분에 빈곳이 없는지 체크한다.
+                else if(lock[i][j] == 0){
+                    return false;
                 }
             }
         }
-
         return true;
-    }
-
-
-
-
-
-    public static int test(int[][] key, int[][] lock){
-        int[] startPoint = new int[2];
-        int[] endPoint = new int[2];
-
-        for(int i=0; i< lock.length; i++)
-        {
-            for (int j=0; j< lock.length; j++){
-                if(lock[i][j] == 0){
-                    startPoint[0] = i;
-                    startPoint[1] = j;
-                    break;
-                }
-            }
-        }
-
-        for(int i=lock.length-1; i>=0; i--)
-        {
-            for (int j=lock.length-1; j>=0; j--){
-                if(lock[i][j] == 0){
-                    startPoint[0] = i;
-                    startPoint[1] = j;
-                    break;
-                }
-            }
-        }
-        return 0;
     }
 }
