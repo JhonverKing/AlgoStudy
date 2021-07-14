@@ -40,8 +40,7 @@ public class Main {
                 positionX = startPosition;
                 positionY++;
             }
-            else
-            {
+            else{
                 return false;
             }
         }
