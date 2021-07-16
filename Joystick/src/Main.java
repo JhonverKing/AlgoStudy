@@ -23,9 +23,9 @@ public class Main {
 
             // 바꿀 위치의 방향과 거리를 찾아서 result에 누적
             for(int j=1; j<nameArray.length; j++){
-                int leftDirectionIndex = (currentIndex + j) % nameArray.length;
-                int rightDirectionIndex = (currentIndex - j + nameArray.length) % nameArray.length;
-                int nextIndex = nameArray[leftDirectionIndex] != 'A' ? leftDirectionIndex : rightDirectionIndex;
+                int rightDirectionIndex = (currentIndex + j) % nameArray.length;
+                int leftDirectionIndex = (currentIndex - j + nameArray.length) % nameArray.length;
+                int nextIndex = nameArray[rightDirectionIndex] != 'A' ? rightDirectionIndex : leftDirectionIndex;
                 if(nameArray[nextIndex] != 'A'){
                     result += j;
                     currentIndex = nextIndex;
