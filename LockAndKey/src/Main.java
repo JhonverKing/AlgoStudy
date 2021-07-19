@@ -30,11 +30,12 @@ public class Main {
         while(true){
             // 방향별로 열쇠가 맞는지 확인
             for(int i=0; i<4; i++){
+                key = rotateKeySet[i]; // 미리 만들어둔 회전셋 사용하기
                 if(canOpen(key, lock, positionX, positionY)) {
                     return true;
                 }
-                // key = getRotatedKey(key); // 90도씩 회전
-                key = rotateKeySet[i]; // 미리 만들어둔 회전셋 사용하기
+//                 key = getRotatedKey(key); // 90도씩 회전
+
             }
 
             // 열쇠를 이동한다
