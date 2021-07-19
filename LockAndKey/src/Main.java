@@ -23,13 +23,18 @@ public class Main {
         int startPosition = (key.length-1) * -1;
         int positionX = startPosition;
         int positionY = startPosition;
+
+        // r x y
+        int[][][] rotateKeySet = getRotatedKeySet(key);
+
         while(true){
             // 방향별로 열쇠가 맞는지 확인
             for(int i=0; i<4; i++){
                 if(canOpen(key, lock, positionX, positionY)) {
                     return true;
                 }
-                key = getRotatedKey(key);
+                // key = getRotatedKey(key); // 90도씩 회전
+                key = rotateKeySet[i]; // 미리 만들어둔 회전셋 사용하기
             }
 
             // 열쇠를 이동한다
@@ -53,6 +58,21 @@ public class Main {
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 result[j][n-i-1] = key[i][j];
+            }
+        }
+        return result;
+    }
+
+    // key를 0도, 90도, 180도, 270도 회전한 3차원 배열을 만든다.
+    public static int[][][] getRotatedKeySet(int[][] key) {
+        int n = key.length;
+        int[][][] result = new int[4][n][n];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                result[0][i][j] = key[i][j]; // 0도
+                result[1][j][n-i-1] = key[i][j]; // 90도
+                result[2][j][n-i-1] = key[n-j-1][i]; // 180도
+                result[3][j][n-i-1] = key[n-i-1][n-j-1]; // 270도
             }
         }
         return result;
