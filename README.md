@@ -31,7 +31,7 @@
 
 다음은 기둥과 보를 설치해 구조물을 만든 예시입니다.  
 
-![columnsAndBeams](./images/columnsAndBeams.PNG)
+![columnsAndBeams](./images/columnsAndBeams.jpg)
 
 예를 들어, 위 그림은 다음 순서에 따라 구조물을 만들었습니다.  
 ````
