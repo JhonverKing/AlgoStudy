@@ -26,8 +26,6 @@ public class Main {
                 return Integer.compare(o1[1], o2[1]);
         });
 
-
-
         System.out.println("answer : " + process2(routes));
     }
 
@@ -35,7 +33,6 @@ public class Main {
     public static int process(int[][] routes){
         int[] visited = new int[routes.length];
         int cnt = 0;
-        int a = Integer.MIN_VALUE;
         for(int i=0; i< routes.length; i++) {
             if(visited[i] == 1) continue;
 
@@ -56,17 +53,11 @@ public class Main {
         int cnt = 0;
         int cam = Integer.MIN_VALUE;
         for(int i=0; i< routes.length; i++) {
-
-            if(cam >= routes[i][0]){
-                //
-            }
-            else{
-                //
+            if(cam < routes[i][0]){
                 cam = routes[i][1];
                 cnt++;
             }
         }
-
         return cnt;
     }
 
