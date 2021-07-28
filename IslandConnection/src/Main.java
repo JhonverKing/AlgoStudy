@@ -16,20 +16,25 @@ public class Main {
     }
 
     public static int process(int n, int[][] costs){
-        int sum=0;
-        HashMap<Integer, HashSet<Integer>> visitedMap = new HashMap<>();
+        // init
+        HashMap<Integer, HashSet<Integer>> connectedLists = new HashMap<>();
+        // key값을 미리 셋팅함
         for(int i=0; i<n; i++){
-            visitedMap.put(i, new HashSet<>());
+            connectedLists.put(i, new HashSet<>());
         }
+        int sum=0;
 
-        while(visitedMap.get(0).size() < n){
+        // 대충 아무 인덱스나 확인해도 연결되어 있다면 같은 값을 뱉지만
+        // 섬의 개수 n은 1 이상 100 이하입니다. 제한사항이 있으므로 get(0)으로 고정
+        while(connectedLists.get(0).size() < n){
+            // 최소 비용인 노드들을 찾을거임
             int min = Integer.MAX_VALUE;
             int beginNode = 0;
             int endNode = 0;
 
             for(int[] cost : costs){
                 // 이미 연결된 노드는 넘김
-                if(visitedMap.get(cost[0]).contains(cost[1])) continue;
+                if(connectedLists.get(cost[0]).contains(cost[1])) continue;
 
                 // 최소비용 구함
                 if(min > cost[2]){
@@ -39,17 +44,19 @@ public class Main {
                 }
             }
 
-            // 최소비용인 노드를 찾았다면
+            // 최소비용인 노드들을 찾았다면
             if(min != Integer.MAX_VALUE){
-                // 현재 연결할 노드가 가지고 있는 기존 리스트에 현재 연결할 노드들을 추가함
-                HashSet<Integer> visitedList = visitedMap.get(beginNode);
-                visitedList.addAll(visitedMap.get(endNode));
-                visitedList.add(beginNode);
-                visitedList.add(endNode);
+                // 노드들이 가지고 있는 지금까지 연결된 노드 리스트를 합침
+                connectedLists.get(beginNode).addAll(connectedLists.get(endNode));
+                HashSet<Integer> curList = connectedLists.get(beginNode);
+
+                // 합친거에 위에서 찾은 최소비용인 노드들도 추가
+                curList.add(beginNode);
+                curList.add(endNode);
 
                 // 연결된 노드들이 같은 list를 가지도록 addAll 해줌
-                for(int num:visitedList){
-                    visitedMap.get(num).addAll(visitedList);
+                for(int nodeNum : curList){
+                    connectedLists.get(nodeNum).addAll(curList);
                 }
                 sum += min;
             }
