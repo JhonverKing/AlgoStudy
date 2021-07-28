@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
     /*
@@ -16,16 +17,14 @@ public class Main {
     * */
 
     public static void main(String[] args) {
-        int[][] routes = {{-20, 15}, {-14, -5}, {-18, -13}, {-5, -3}};
+//        int[][] routes = {{-20, 15}, {-14, -5}, {-18, -13}, {-5, -3}};
+        int[][] routes = {{-100,100}, {50,170}, {150,200}, {10,20}, {30,40}};
         int answer = 0;
 
-        Arrays.sort(routes, (o1, o2) -> {
-            if(o1[1] == o2[1])
-                return Integer.compare(o1[0], o2[0]);
-            else
-                return Integer.compare(o1[1], o2[1]);
-        });
-
+//        Arrays.sort(routes, Comparator.comparingInt(o -> o[1]));
+        Arrays.sort(routes, (o1, o2) -> { return Integer.compare(o1[1], o2[1]);  }); // 이게 빠르네
+        for(int i=0; i<routes.length; i++)
+            System.out.println(routes[i][1]);
         System.out.println("answer : " + process2(routes));
     }
 
