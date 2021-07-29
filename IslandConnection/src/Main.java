@@ -116,10 +116,6 @@ public class Main {
     public static int process3(int n, int[][] costs){
         int sum=0;
 
-        System.out.println("변경전");
-        for(int i=0; i< costs.length; i++){
-            System.out.println("costs[" + i + "] : " + costs[i][0] + "," + costs[i][1] + "," + costs[i][2]);
-        }
         for(int i=0; i< costs.length; i++){
             // 최소 비용인 노드들을 찾을거임
             int min = costs[i][2];
@@ -128,15 +124,11 @@ public class Main {
             if(beginNode == endNode) continue;
 
             sum += min;
-            for(int[] cost : costs){
-                if(cost[0] == endNode) cost[0] = beginNode;
-                if(cost[1] == endNode) cost[1] = beginNode;
+            for(int j=i; j< costs.length; j++){
+                if(costs[j][0] == endNode) costs[j][0] = beginNode;
+                if(costs[j][1] == endNode) costs[j][1] = beginNode;
             }
-        }
 
-        System.out.println("변경후");
-        for(int i=0; i< costs.length; i++){
-            System.out.println("costs[" + i + "] : " + costs[i][0] + "," + costs[i][1] + "," + costs[i][2]);
         }
         return sum;
     }
