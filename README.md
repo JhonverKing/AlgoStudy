@@ -8,7 +8,7 @@
 > 이후 디스코드 화면 공유로 문제 해결 과정에 대한 리뷰를 진행 함. 
 
 ---
-## 섬 연결하기 - 탐욕법 - 2021.07.28
+## 섬 연결하기 - 탐욕법 - 2021.08.02
 ### 문제 및 풀이
 [Programmers](https://programmers.co.kr/learn/courses/30/lessons/42861)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/IslandConnection/src/Main.java)  
