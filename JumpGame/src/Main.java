@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -8,6 +9,7 @@ public class Main {
 	// write your code here
 //        int[] nums = {2,3,1,1,4};
         int[] nums = {3, 2, 1, 0, 4};
+        
 //        int[] nums = {0};
         boolean answer = canComplete2(nums);
         System.out.println("answer : " + answer);

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -24,22 +25,15 @@ public class Main {
         bomberMan(n, grid);
     }
 
-    public static void installation(List<String> grid){
-        char[] line = new char[grid.get(0).length()];
-        for(int i=0; i<line.length; i++){
-            line[i] = 'O';
-        }
-        for(int i=0; i<grid.size(); i++){
-            String newLine = new String(line);
-            grid.set(i,newLine);
-        }
-    }
+
 
     public static List<String> bomberMan(int n, List<String> grid){
 
         char[][] locations = new char[grid.size()][grid.get(0).length()];
 
-        if(n > 4) n=(n%4)+4;
+        if(n > 4) {
+            n = (n % 4) + 4;
+        }
 
         for(int i=1; i<=n; i++){
             System.out.println(i + "sec...");
@@ -69,6 +63,16 @@ public class Main {
         }
         return grid;
     }
+    public static void installation(List<String> grid){
+
+        char[] line = new char[grid.get(0).length()];
+        Arrays.fill(line, 'O');
+        for(int i=0; i<grid.size(); i++){
+            grid.set(i,new String(line));
+        }
+
+
+    }
 
     public static char[][] locations(List<String> grid){
         char[][] locations = new char[grid.size()][grid.get(0).length()];
@@ -86,26 +90,33 @@ public class Main {
             for(int j=0; j<locations[i].length; j++){
 
                 for(int offsetY = -1; offsetY<2; offsetY++){
-                    if(i==0 && offsetY==-1) continue;
-                    if(i==locations.length-1 && offsetY==1) continue;
-
+                    if(!isValid(i, offsetY, locations.length)) continue;
                     if(locations[i+offsetY][j] == 'O'){
                         line[j] = '.';
                         break;
                     }
                 }
                 for(int offsetX = -1; offsetX<2; offsetX++){
-                    if(j==0 && offsetX==-1) continue;
-                    if(j==locations[i].length-1 && offsetX==1) continue;
-
+                    if(!isValid(j, offsetX, locations.length)) continue;
                     if(locations[i][j+offsetX] == 'O'){
                         line[j] = '.';
                         break;
                     }
                 }
             }
-            String newLine = new String(line);
-            grid.set(i, newLine);
+            grid.set(i, new String(line));
         }
+    }
+
+    private static boolean isValid(int loopNo, int offset, int length){
+
+        if(loopNo == 0 && offset == -1){
+            return false;
+        }
+        if(loopNo == length-1 && offset == 1){
+            return false;
+        }
+
+        return true;
     }
 }
