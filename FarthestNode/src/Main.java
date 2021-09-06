@@ -21,12 +21,12 @@ n	vertex	                                                    return
         int[][] edge = {{3, 6}, {4, 3}, {3, 2}, {1, 3}, {1, 2}, {2, 4}, {5, 2}};
         int answer = 0;
 
-        answer = getFarthestNodeCount3(n, edge);
-//        int[] visitedNode = new int[n+1];
-//        int[] distanceToNode = new int[n+1];
-//        HashMap<Integer, List<Integer>> adjNodeList = getAdjNodeList(edge);
-//        visitedNode[1] = 1;
-//        answer = dfs(1, visitedNode, 0, adjNodeList, distanceToNode);
+//        answer = getFarthestNodeCount3(n, edge);
+        int[] visitedNode = new int[n+1];
+        int[] distanceToNode = new int[n+1];
+        HashMap<Integer, List<Integer>> adjNodeList = getAdjNodeList(edge);
+        visitedNode[1] = 1;
+        answer = dfs(1, visitedNode, 0, adjNodeList, distanceToNode);
         System.out.println("answer : " + answer);
     }
     // 1 : 3, 2
