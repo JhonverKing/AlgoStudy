@@ -9,7 +9,76 @@
 
 ---
 
-## The Bomberman Game - 2021. 08. 11
+## Jump Game - 2021.08.29
+### 문제 및 풀이
+[LeetCode](https://leetcode.com/problems/jump-game/)  
+[Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/JumpGame/src/Main.java)  
+
+<details markdown="1">
+  <summary>내용 보기</summary>
+
+### 문제내용
+You are given an integer array ``nums``. You are initially positioned at the array's **first index**, and each element in the array represents your maximum jump length at that position.
+
+Return ``true`` if you can reach the last index, or ``false`` otherwise.
+
+ 
+
+**Example 1:**
+
+    Input: nums = [2,3,1,1,4]
+    Output: true
+    Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+**Example 2:**
+
+    Input: nums = [3,2,1,0,4]
+    Output: false
+    Explanation: You will always arrive at index 3 no matter what. 
+                 Its maximum jump length is 0, which makes it impossible to reach the last index.
+ 
+
+**Constraints:**
+
+ - 1 <= nums.length <= 104
+ - 0 <= nums[i] <= 105
+
+
+### 풀이과정
+##### 초기구상
+1. ``Queue``에 0을 넣고 큐가 다 소진될때까지 반복~
+2. nums의 0번째(큐에서 꺼낸 값) 값만큼 0부터 반복실행하면서 (i=0 ~ i=nums[0])
+3. ``HashSet``을 활용해서 그녀석들이 갈 수 있는 자리들을 넣고
+4. ``Queue``에도 각 값을 넣자. 이때 HashSet에 이미 있는 값은 넣지말자~ 
+5. 그럼 결국 이동가능한 모든 자리가 Set에 저장되고 마지막 인덱스번호가 Set에 없으면 정답은 ``false``라는 말이다.
+
+##### 진행하며 수정된 내용
+ - 우선 위 내용으로 결과를 봤다. 
+ - 하지만 너무 느리다.
+ - 반복문 하나로 더 쉽게 풀 수 있는 방법을 생각해보자.
+
+##### 최종형태
+ - 결국 0부터 시작해서 현재 내가 이동할 수 있는 최대값(Max) 까지 1씩 증가하면서 계속 최대값만 계산 해주면 됨.
+ - 아래 코드 참고! Good!!
+````
+private static boolean canComplete2(int[] nums){
+  int max = nums[0];
+  
+  for(int i=0; i<=max; i++){
+    max = Math.max(max, i + nums[i]);
+    if(max >= nums.length-1) return true;
+  }
+
+  return false;
+}
+````
+
+##### 실행결과
+    Accepted	1 ms	  39.8 MB  << -- 느려서 다시 푼거  
+    Accepted	577 ms	41.1 MB  << -- 처음 푼거  
+
+</details>
+
+## The Bomberman Game - 2021.08.11
 ### 문제 및 풀이
 [HackerRank](https://www.hackerrank.com/challenges/bomber-man/problem)  
 [Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/Bomberman/src/Main.java)  
