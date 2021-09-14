@@ -9,8 +9,7 @@ public class Main {
         System.out.println("answer : " + process(word));
     }
 
-    // 0 1 2 3 4
-    // A E I O U
+
     // 1 + 1 + 1 + 1 + 2
     // 1 + 1 + 1 + (1 + 6)
     //
@@ -18,10 +17,14 @@ public class Main {
         char[] wordToCharArr = word.toCharArray();
         int len = wordToCharArr.length;
         int[] sizeOffset = {781, 156, 31, 6, 1};
+        // String word = "AAAAE"; // 6
+        // 1 2 3 4 5
+        // A E I O U
         // (5*1) + 1 = 6
         // (5*6) + 1 = 31
         // (5*31) + 1 = 156
         // (5*156) + 1 = 781
+
         int seq = 0;
 
         int result = 0;
