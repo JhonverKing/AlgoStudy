@@ -1,4 +1,4 @@
-블로그 리뷰  
+문제 풀이 리뷰  
 > https://sandang.tistory.com/category/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
 
 참여인원 4
