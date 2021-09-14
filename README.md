@@ -9,6 +9,121 @@
 
 ---
 
+## 야근지수 - 2021.08.30
+### 문제 및 풀이
+[Programmers](https://programmers.co.kr/learn/courses/30/lessons/12927)  
+[Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/Overtime/src/Main.java)  
+
+<details markdown="1">
+  <summary>내용 보기</summary>
+
+### 문제내용
+````
+회사원 Demi는 가끔은 야근을 하는데요, 야근을 하면 야근 피로도가 쌓입니다. 
+야근 피로도는 야근을 시작한 시점에서 남은 일의 작업량을 제곱하여 더한 값입니다. 
+Demi는 N시간 동안 야근 피로도를 최소화하도록 일할 겁니다.
+Demi가 1시간 동안 작업량 1만큼을 처리할 수 있다고 할 때, 
+퇴근까지 남은 N 시간과 각 일에 대한 작업량 works에 대해 야근 피로도를 최소화한 값을 리턴하는 함수 solution을 완성해주세요.
+
+제한 사항
+ - works는 길이 1 이상, 20,000 이하인 배열입니다.
+ - works의 원소는 50000 이하인 자연수입니다.
+ - n은 1,000,000 이하인 자연수입니다.
+````
+|works|n|result|  
+|---|---|---|  
+|[1,1]|3|0|  
+
+**입출력 예 #1**  
+n=4 일 때, 남은 일의 작업량이 [4, 3, 3] 이라면 야근 지수를 최소화하기 위해 4시간동안 일을 한 결과는 [2, 2, 2]입니다. 
+이 때 야근 지수는 22 + 22 + 22 = 12 입니다.
+
+**입출력 예 #2**  
+n=1일 때, 남은 일의 작업량이 [2,1,2]라면 야근 지수를 최소화하기 위해 1시간동안 일을 한 결과는 [1,1,2]입니다. 
+야근지수는 12 + 12 + 22 = 6입니다.
+
+### 풀이과정
+##### 초기구상
+1. 결국 작업량이 많이 남은 녀석부터 1씩 깎으면 될거같다.
+2. 마지막에 야근지수 계산해주자. 
+
+##### 진행하며 수정된 내용  
+ - ``PriorityQueue``의 사용으로 쉽게 풀 수 있다.
+ - 큐에 값을 넣으면 우선순위를 정하여 오름차순 혹은 내림차순으로 알아서 자기 자리에 맡게 찾아서 들어간다. 
+
+##### 최종형태
+1. 남은 작업을 내림차순으로 ``PriorityQueue``에 넣는다
+2. ``n``만큼 반복하면서 큐에서 꺼내서 1 빼고 다시 큐에 넣기를 반복하면 끝
+
+##### 실행결과
+    테스트 1 〉	통과 (0.48ms, 62.4MB)
+    테스트 2 〉	통과 (0.75ms, 72.4MB)
+    테스트 3 〉	통과 (0.61ms, 72.6MB)
+    테스트 4 〉	통과 (0.79ms, 73.3MB)
+    테스트 5 〉	통과 (0.61ms, 61.6MB)
+    테스트 6 〉	통과 (0.46ms, 59.6MB)
+    테스트 7 〉	통과 (0.43ms, 71.9MB)
+    테스트 8 〉	통과 (2.29ms, 59.9MB)
+    테스트 9 〉	통과 (2.05ms, 69.1MB)
+    테스트 10 〉	통과 (0.45ms, 59.8MB)
+    테스트 11 〉	통과 (0.59ms, 60MB)
+    테스트 12 〉	통과 (0.57ms, 59.9MB)
+    테스트 13 〉	통과 (0.41ms, 69.2MB)
+    
+    # 효율성
+    테스트 1 〉	통과 (126.38ms, 68.5MB)
+    테스트 2 〉	통과 (98.74ms, 68.3MB)
+
+</details>
+
+## Perfect Squares - 2021.08.29
+### 문제 및 풀이
+[LeetCode](https://leetcode.com/problems/perfect-squares/)  
+[Git Solution](https://github.com/JhonverKing/AlgoStudy/blob/main/PerfectSquares/src/Main.java)  
+
+<details markdown="1">
+  <summary>내용 보기</summary>
+
+### 문제내용
+Given an integer ``n``, return the least number of perfect square numbers that sum to ``n``.
+
+A **perfect square** is an integer that is the square of an integer; in other words, it is the product of some integer with itself.  
+For example, ``1``, ``4``, ``9``, and ``16`` are perfect squares while ``3`` and ``11`` are not.  
+
+ 
+
+**Example 1:**
+
+    Input: n = 12
+    Output: 3
+    Explanation: 12 = 4 + 4 + 4.
+**Example 2:**
+
+    Input: n = 13
+    Output: 2
+    Explanation: 13 = 4 + 9.
+ 
+
+**Constraints:**
+
+ - 1 <= n <= 10<sup>4</sup>
+
+### 풀이과정
+##### 초기구상
+1.
+
+##### 진행하며 수정된 내용  
+ - 
+
+##### 최종형태
+1. 
+
+##### 실행결과
+    Accepted	51 ms	40.9 MB  
+
+</details>
+
+
 ## Number Of Islands - 2021.08.29  
 ### 문제 및 풀이
 [LeetCode](https://leetcode.com/problems/number-of-islands/)  
