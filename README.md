@@ -31,6 +31,11 @@
 ---
 
 ## 블로그 작성 포맷
+
+<details markdown="1">
+  <summary>내용 보기</summary>
+
+
 문제 링크 : [Programmers]()  
 나의 풀이 : [Git Solution]()  
 
@@ -57,3 +62,4 @@
 ##### 실행결과
     테스트 1 〉   통과 (0.11ms, 52.2MB)  
 
+</details>
