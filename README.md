@@ -1,16 +1,16 @@
-문제 풀이 리뷰  
+### 블로그  
 > https://sandang.tistory.com/category/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
 
-참여인원 4
+### 참여인원 4
 > 잡부 : https://github.com/lordchiwoo/algo_programmers  
 > 강서 : https://github.com/mertyn88/algorithm  
 > 가니 : https://github.com/kwan1989/algorithm_Programmers
 
-진행방법
+### 진행방법
 > 프로그래머스, 해커랭크, 리트코드 등의 알고리즘 문제를 각자의 방법으로 해결하고 각자 깃허브에 업로드 함.  
 > 이후 디스코드 화면 공유로 문제 해결 과정에 대한 리뷰를 진행 함. 
 
----
+### 완료 목록 
 [Programmers] 야근지수 - 2021.08.30 - [링크](https://sandang.tistory.com/35?category=491892)    
 [LeetCode] Perfect Squares - 2021.08.29 - [링크](https://sandang.tistory.com/34?category=491892)    
 [LeetCode] Number Of Islands - 2021.08.29 - [링크](https://sandang.tistory.com/33?category=491892)    
