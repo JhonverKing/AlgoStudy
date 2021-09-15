@@ -11,7 +11,7 @@
 > 이후 디스코드 화면 공유로 문제 해결 과정에 대한 리뷰를 진행 함. 
 
 ### 완료 목록 
-[Programmers] 모음사전 - - 2021.09.13 - [링크](https://sandang.tistory.com/38?category=491892)  
+[Programmers] 모음사 - 2021.09.13 - [링크](https://sandang.tistory.com/38?category=491892)  
 [LeetCode] Best time to buy and sell stock II - 2021.09.13 - [링크](https://sandang.tistory.com/37?category=491892)  
 [LeetCode] Game of Life - 2021.09.03 - [링크](https://sandang.tistory.com/36?category=491892)    
 [Programmers] 야근지수 - 2021.08.30 - [링크](https://sandang.tistory.com/35?category=491892)    
