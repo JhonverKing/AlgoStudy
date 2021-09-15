@@ -30,12 +30,12 @@
 
 ---
 
-## 블로그 작성 포맷
+
 
 <details markdown="1">
-  <summary>내용 보기</summary>
+  <summary>블로그 작성 포맷 </summary>
 
-
+## 블로그 작성 포맷
 문제 링크 : [Programmers]()  
 나의 풀이 : [Git Solution]()  
 
